@@ -322,12 +322,14 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(180px, 58vw, 220px);
+    width: auto;
+    min-width: clamp(160px, 52vw, 200px);
     border-radius: 15px;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: clamp(11px, 3.5vw, 13px);
     line-height: 31px;
+    padding: 0 20px;
     transition: all var(--tr);
 }
 
@@ -349,7 +351,7 @@ img { max-width: 100%; display: block; }
 /* ── Digital Designer — horizontal + vertical ── */
 .hero-role {
     position: absolute;
-    left: 0;
+    left: -4px;
     top: 263px;
     display: flex;
     align-items: flex-start;
@@ -388,7 +390,7 @@ img { max-width: 100%; display: block; }
     position: absolute;
     left: 20px;
     right: -5%;
-    top: 200px;
+    top: 180px;
     bottom: 0;
     overflow: hidden;
     z-index: 1;
@@ -398,9 +400,6 @@ img { max-width: 100%; display: block; }
 .hero-photo-wrap img {
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     object-fit: cover;
     object-position: center center;
     max-width: none;

@@ -95,7 +95,7 @@ function initTextScramble() {
         const len = finalText.length;
         let resolved = new Array(len).fill(false);
         let iterations = 0;
-        const maxIterations = 14;
+        const maxIterations = 24;
 
         setTimeout(() => {
             const interval = setInterval(() => {
@@ -123,7 +123,7 @@ function initTextScramble() {
                     el.textContent = finalText;
                     clearInterval(interval);
                 }
-            }, 60);
+            }, 80);
         }, delay);
     }
 
@@ -131,9 +131,9 @@ function initTextScramble() {
     elFirst.textContent = '';
     elLast.textContent = '';
 
-    // Запускаем с небольшой задержкой между словами
-    scramble(elFirst, finalFirst, 200);
-    scramble(elLast, finalLast, 500);
+    // Запускаем с задержкой между словами
+    scramble(elFirst, finalFirst, 300);
+    scramble(elLast, finalLast, 800);
 }
 
 
