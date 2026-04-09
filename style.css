@@ -371,12 +371,13 @@ img { max-width: 100%; display: block; }
 
 .role-v {
     position: absolute;
-    left: 8px;
+    left: 0;
     top: 0;
     font-family: var(--font-display);
     font-size: clamp(30px, 9.7vw, 37px);
     font-weight: 400;
     color: var(--text);
+    opacity: 0.5;
     text-transform: uppercase;
     letter-spacing: 0;
     line-height: 1;
@@ -388,9 +389,9 @@ img { max-width: 100%; display: block; }
 /* ── Photo — extends beyond right edge ── */
 .hero-photo-wrap {
     position: absolute;
-    left: 20px;
-    right: -5%;
-    top: 180px;
+    left: 0;
+    right: -8%;
+    top: 210px;
     bottom: 0;
     overflow: hidden;
     z-index: 1;
