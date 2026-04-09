@@ -311,8 +311,9 @@ img { max-width: 100%; display: block; }
     left: 0;
     top: 139px;
     display: flex;
-    flex-direction: column;
-    gap: 9px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
 }
 
 /* ── Buttons — Figma exact ── */
@@ -338,12 +339,26 @@ img { max-width: 100%; display: block; }
     -webkit-text-fill-color: var(--btn-text);
 }
 
-.hero .btn-outline {
+.hero .btn-icon {
+    width: clamp(30px, 10vw, 37px);
     height: clamp(30px, 10vw, 37px);
+    min-width: unset;
+    border-radius: 13px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: transparent;
     color: var(--text-secondary);
     -webkit-text-fill-color: var(--text-secondary);
     border: 1.6px solid var(--btn-outline-border);
+    transition: all var(--tr);
+}
+
+.hero .btn-icon:hover {
+    border-color: var(--text-muted);
+    color: var(--text);
+    -webkit-text-fill-color: var(--text);
 }
 
 /* ── Digital Designer — horizontal + vertical ── */
@@ -1220,13 +1235,14 @@ img { max-width: 100%; display: block; }
 
     .section { padding: 100px 0; }
 
-    .hero-text { top: 70px; left: 40px; }
+    .hero-text { top: 80px; left: calc((100vw - 1080px) / 2 + 20px); }
 
     .hero-photo-wrap {
-        right: 40px;
-        left: 55%;
-        height: calc(100vh - 200px);
-        top: 200px;
+        right: calc((100vw - 1080px) / 2 + 20px);
+        left: auto;
+        width: clamp(260px, 28vw, 360px);
+        height: calc(100vh - 240px);
+        top: 240px;
     }
 
     .modal-content { max-width: 680px; }
