@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initTextScramble();
     initScrollAnimations();
+    initSkillTabs();
     initSkillBars();
+    initCounters();
+    initAccordion();
     initProjectFilter();
     initProjectModal();
     initContactForm();
@@ -155,7 +158,40 @@ function initScrollAnimations() {
 
 
 /* ═══════════════════════════════════════════════════
-   6. SKILL BARS ANIMATION
+   6. SKILL TABS
+   ═══════════════════════════════════════════════════ */
+function initSkillTabs() {
+    const tabs = document.querySelectorAll('.skill-tab');
+    const panels = document.querySelectorAll('.skill-panel');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const skill = tab.dataset.skill;
+
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            panels.forEach(panel => {
+                if (panel.dataset.skill === skill) {
+                    panel.classList.add('active');
+                    // Re-animate skill bars in this panel
+                    const fills = panel.querySelectorAll('.skill-fill');
+                    fills.forEach(fill => {
+                        fill.classList.remove('animate');
+                        void fill.offsetWidth; // trigger reflow
+                        fill.classList.add('animate');
+                    });
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
+        });
+    });
+}
+
+
+/* ═══════════════════════════════════════════════════
+   7. SKILL BARS ANIMATION
    ═══════════════════════════════════════════════════ */
 function initSkillBars() {
     const fills = document.querySelectorAll('.skill-fill');
@@ -177,7 +213,83 @@ function initSkillBars() {
 
 
 /* ═══════════════════════════════════════════════════
-   7. PROJECT FILTER
+   8. ANIMATED COUNTERS
+   ═══════════════════════════════════════════════════ */
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-num[data-target]');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+
+        el.textContent = current + suffix;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+
+/* ═══════════════════════════════════════════════════
+   9. ACCORDION (SERVICES)
+   ═══════════════════════════════════════════════════ */
+function initAccordion() {
+    const items = document.querySelectorAll('.accordion-item');
+
+    items.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const body = item.querySelector('.accordion-body');
+
+        header.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+
+            // Close all
+            items.forEach(otherItem => {
+                otherItem.classList.remove('open');
+                const otherBody = otherItem.querySelector('.accordion-body');
+                otherBody.style.maxHeight = '0';
+            });
+
+            // Open clicked (if it was closed)
+            if (!isOpen) {
+                item.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + 'px';
+            }
+        });
+    });
+}
+
+
+/* ═══════════════════════════════════════════════════
+   10. PROJECT FILTER
    ═══════════════════════════════════════════════════ */
 function initProjectFilter() {
     const tabs = document.querySelectorAll('.filter-btn');
@@ -215,7 +327,7 @@ function initProjectFilter() {
 
 
 /* ═══════════════════════════════════════════════════
-   8. PROJECT MODAL + CAROUSEL
+   11. PROJECT MODAL + CAROUSEL
    ═══════════════════════════════════════════════════ */
 function initProjectModal() {
     const modal = document.getElementById('projectModal');
@@ -281,6 +393,12 @@ function initProjectModal() {
             desc: 'Дизайн стартового экрана для игровой платформы. 3D-элементы созданы в Blender, композитинг и пост-обработка в After Effects. Атмосферный, кинематографичный результат.',
             tags: ['Игры', 'Blender', 'After Effects', '3D'],
             slides: ['Концепт', '3D-моделинг', 'Композитинг', 'Финал']
+        },
+        'media-4': {
+            title: 'Social media pack',
+            desc: 'Полное оформление соцсетей для бренда: шаблоны сторис, посты, хайлайтсы, обложки. Единый визуальный стиль, адаптированный для Instagram и VK. Более 50 шаблонов для регулярного контента.',
+            tags: ['SMM', 'Photoshop', 'Figma', 'Шаблоны'],
+            slides: ['Шаблоны сторис', 'Посты', 'Хайлайтсы', 'Обложки']
         }
     };
 
@@ -376,7 +494,7 @@ function initProjectModal() {
 
 
 /* ═══════════════════════════════════════════════════
-   9. CONTACT FORM
+   12. CONTACT FORM
    ═══════════════════════════════════════════════════ */
 function initContactForm() {
     const form = document.getElementById('contactForm');
@@ -444,7 +562,7 @@ function initContactForm() {
 
 
 /* ═══════════════════════════════════════════════════
-   10. SMOOTH SCROLL
+   13. SMOOTH SCROLL
    ═══════════════════════════════════════════════════ */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
