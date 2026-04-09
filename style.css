@@ -389,9 +389,9 @@ img { max-width: 100%; display: block; }
 /* ── Photo — extends beyond right edge ── */
 .hero-photo-wrap {
     position: absolute;
-    left: 10px;
-    right: -3%;
-    top: 230px;
+    left: 20px;
+    right: 5%;
+    top: 260px;
     bottom: 0;
     overflow: hidden;
     z-index: 1;
