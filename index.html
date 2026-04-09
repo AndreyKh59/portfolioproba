@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Андрей Харин — Digital Designer</title>
+    <meta name="description" content="Персональное портфолио Digital Designer. Полиграфия, медиа, веб-дизайн.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark">
+
+    <!-- Cursor Follower -->
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <nav class="nav-inner">
+            <a href="#hero" class="nav-logo">HARIN</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#experience">Опыт</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+                    <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Panel -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links" id="mobileMenuLinks">
+            <li><a href="#hero">Главная</a></li>
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#skills">Навыки</a></li>
+            <li><a href="#experience">Опыт</a></li>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- ═══════════ HERO ═══════════ -->
+        <section class="hero" id="hero">
+            <div class="hero-bg-grid"></div>
+            <div class="hero-line hero-line-1"></div>
+            <div class="hero-line hero-line-2"></div>
+            <div class="hero-watermark">DESIGN</div>
+
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-dot"></span>
+                    Открыт к предложениям
+                </div>
+                <h1 class="hero-name">
+                    АНДРЕЙ<br>
+                    <span class="hero-accent">ХАРИН</span>
+                </h1>
+                <div class="hero-typing">
+                    <span id="typingText"></span><span class="typing-cursor">|</span>
+                </div>
+                <p class="hero-tagline">
+                    Мне нравится создавать что-то новое. Каждый проект — это возможность превратить идею в визуальный опыт.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Портфолио <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    <a href="#contact" class="btn btn-outline">Связаться</a>
+                </div>
+                <div class="hero-scroll">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ ABOUT ═══════════ -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-header scroll-animate">
+                    <span class="section-label">01 — Обо мне</span>
+                    <h2 class="section-title">Краткое <span class="accent">знакомство</span></h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-left scroll-animate-left">
+                        <div class="about-avatar-row">
+                            <div class="avatar-circle">
+                                <span class="avatar-initials">АХ</span>
+                            </div>
+                            <div class="about-info">
+                                <h3>Харин Андрей Николаевич</h3>
+                                <p class="about-role">Digital Designer &middot; г. Пермь, 25 лет</p>
+                                <p class="about-bio">Мне нравится создавать что-то новое. Каждый проект — это возможность превратить идею в визуальный опыт. 4 года в полиграфии и 1 год фриланса дали мне разносторонний опыт в дизайне — от печати до цифровых продуктов.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-right scroll-animate-right">
+                        <div class="stats-grid">
+                            <div class="stat-card" data-target="4" data-suffix="+">
+                                <span class="stat-number"><span class="stat-count">0</span><span class="stat-suffix">+</span></span>
+                                <span class="stat-label">Лет опыта</span>
+                            </div>
+                            <div class="stat-card" data-target="50" data-suffix="+">
+                                <span class="stat-number"><span class="stat-count">0</span><span class="stat-suffix">+</span></span>
+                                <span class="stat-label">Проектов</span>
+                            </div>
+                            <div class="stat-card" data-target="15" data-suffix="+">
+                                <span class="stat-number"><span class="stat-count">0</span><span class="stat-suffix">+</span></span>
+                                <span class="stat-label">Клиентов</span>
+                            </div>
+                            <div class="stat-card" data-target="3" data-suffix="">
+                                <span class="stat-number"><span class="stat-count">0</span><span class="stat-suffix"></span></span>
+                                <span class="stat-label">Направления</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ SKILLS ═══════════ -->
+        <section class="section section-alt" id="skills">
+            <div class="container">
+                <div class="section-header scroll-animate">
+                    <span class="section-label">02 — Навыки</span>
+                    <h2 class="section-title">Инструменты <span class="accent">& навыки</span></h2>
+                </div>
+
+                <div class="skills-desktop">
+                    <div class="skill-group scroll-animate" data-delay="0">
+                        <div class="skill-group-header">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                            <h3>Дизайн</h3>
+                        </div>
+                        <div class="skill-rings-grid">
+                            <div class="skill-ring-item" data-level="95"><svg class="skill-ring-svg" viewBox="0 0 88 88"><circle cx="44" cy="44" r="36" fill="none" stroke="currentColor" stroke-width="3" class="ring-bg"/><circle cx="44" cy="44" r="36" fill="none" stroke="#FF4D00" stroke-width="3" stroke-linecap="round" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><span class="skill-ring-label">Figma</span></div>
+                            <div class="skill-ring-item" data-level="90"><svg class="skill-ring-svg" viewBox="0 0 88 88"><circle cx="44" cy="44" r="36" fill="none" stroke="currentColor" stroke-width="3" class="ring-bg"/><circle cx="44" cy="44" r="36" fill="none" stroke="#FF4D00" stroke-width="3" stroke-linecap="round" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><span class="skill-ring-label">Photoshop</span></div>
+                            <div class="skill-ring-item" data-level="85"><svg class="skill-ring-svg" viewBox="0 0 88 88"><circle cx="44" cy="44" r="36" fill="none" stroke="currentColor" stroke-width="3" class="ring-bg"/><circle cx="44" cy="44" r="36" fill="none" stroke="#FF4D00" stroke-width="3" stroke-linecap="round" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><span class="skill-ring-label">Illustrator</span></div>
+                            <div class="skill-ring-item" data-level="40"><svg class="skill-ring-svg" viewBox="0 0 88 88"><circle cx="44" cy="44" r="36" fill="none" stroke="currentColor" stroke-width="3" class="ring-bg"/><circle cx="44" cy="44" r="36" fill="none" stroke="#FF4D00" stroke-width="3" stroke-linecap="round" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><span class="skill-ring-label">Blender</span></div>
+                        </div>
+                    </div>
+                    <div class="skill-group scroll-animate" data-delay="150">
+                        <div class="skill-group-header">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+                            <h3>Медиа</h3>
+                        </div>
+                        <div class="skill-rings-grid">
+                            <div class="skill-ring-item" data-level="75"><svg class="skill-ring-svg" viewBox="0 0 88 88"><circle cx="44" cy="44" r="36" fill="none" stroke="currentColor" stroke-width="3" class="ring-bg"/><circle cx="44" cy="44" r="36" fill="none" stroke="#FF4D00" stroke-width="3" stroke-linecap="round" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><span class="skill-ring-label">After Effects</span></div>
+                            <div class="skill-ring-item" data-level="70"><svg class="skill-ring-svg" viewBox="0 0 88 88"><circle cx="44" cy="44" r="36" fill="none" stroke="currentColor" stroke-width="3" class="ring-bg"/><circle cx="44" cy="44" r="36" fill="none" stroke="#FF4D00" stroke-width="3" stroke-linecap="round" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><span class="skill-ring-label">Premiere Pro</span></div>
+                        </div>
+                    </div>
+                    <div class="skill-group scroll-animate" data-delay="300">
+                        <div class="skill-group-header">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <h3>Код</h3>
+                        </div>
+                        <div class="skill-rings-grid">
+                            <div class="skill-ring-item" data-level="65"><svg class="skill-ring-svg" viewBox="0 0 88 88"><circle cx="44" cy="44" r="36" fill="none" stroke="currentColor" stroke-width="3" class="ring-bg"/><circle cx="44" cy="44" r="36" fill="none" stroke="#FF4D00" stroke-width="3" stroke-linecap="round" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><span class="skill-ring-label">HTML/CSS</span></div>
+                            <div class="skill-ring-item" data-level="50"><svg class="skill-ring-svg" viewBox="0 0 88 88"><circle cx="44" cy="44" r="36" fill="none" stroke="currentColor" stroke-width="3" class="ring-bg"/><circle cx="44" cy="44" r="36" fill="none" stroke="#FF4D00" stroke-width="3" stroke-linecap="round" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><span class="skill-ring-label">JavaScript</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile: horizontal scroll pills -->
+                <div class="skills-mobile">
+                    <div class="skills-scroll-row">
+                        <div class="skill-pill"><span class="pill-percent">95%</span><span class="pill-name">Figma</span><div class="pill-bar"><div class="pill-bar-fill" data-width="95"></div></div></div>
+                        <div class="skill-pill"><span class="pill-percent">90%</span><span class="pill-name">Photoshop</span><div class="pill-bar"><div class="pill-bar-fill" data-width="90"></div></div></div>
+                        <div class="skill-pill"><span class="pill-percent">85%</span><span class="pill-name">Illustrator</span><div class="pill-bar"><div class="pill-bar-fill" data-width="85"></div></div></div>
+                        <div class="skill-pill"><span class="pill-percent">75%</span><span class="pill-name">After Effects</span><div class="pill-bar"><div class="pill-bar-fill" data-width="75"></div></div></div>
+                        <div class="skill-pill"><span class="pill-percent">70%</span><span class="pill-name">Premiere Pro</span><div class="pill-bar"><div class="pill-bar-fill" data-width="70"></div></div></div>
+                        <div class="skill-pill"><span class="pill-percent">65%</span><span class="pill-name">HTML/CSS</span><div class="pill-bar"><div class="pill-bar-fill" data-width="65"></div></div></div>
+                        <div class="skill-pill"><span class="pill-percent">50%</span><span class="pill-name">JavaScript</span><div class="pill-bar"><div class="pill-bar-fill" data-width="50"></div></div></div>
+                        <div class="skill-pill"><span class="pill-percent">40%</span><span class="pill-name">Blender</span><div class="pill-bar"><div class="pill-bar-fill" data-width="40"></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ EXPERIENCE ═══════════ -->
+        <section class="section" id="experience">
+            <div class="container">
+                <div class="section-header scroll-animate">
+                    <span class="section-label">03 — Опыт</span>
+                    <h2 class="section-title">Мой <span class="accent">путь</span></h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-line-bg"></div>
+                    <div class="timeline-item scroll-animate">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-period">2021 — 2025</span>
+                            <h3 class="timeline-title">Дизайнер в типографии</h3>
+                            <p class="timeline-company">Полиграфия</p>
+                            <p class="timeline-desc">Разработка полиграфической продукции: логотипы, айдентика, упаковка, каталоги. Подготовка макетов для печати, препресс, работа с клиентами. 4 года hands-on опыта в визуальном дизайне.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-item-alt scroll-animate">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-period">2025 — настоящее время</span>
+                            <h3 class="timeline-title">Фриланс-дизайнер</h3>
+                            <p class="timeline-company">Самозанятый</p>
+                            <p class="timeline-desc">Дизайн для веб, социальных сетей, брендинг. Мультидисциплинарные проекты — от UI-дизайна до моушн-графики. Работа с разнообразными клиентами и задачами.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ PROJECTS ═══════════ -->
+        <section class="section section-alt" id="projects">
+            <div class="container">
+                <div class="section-header scroll-animate">
+                    <span class="section-label">04 — Проекты</span>
+                    <h2 class="section-title">Избранные <span class="accent">работы</span></h2>
+                </div>
+
+                <div class="filter-tabs scroll-animate" id="filterTabs">
+                    <button class="filter-btn active" data-filter="Все">Все</button>
+                    <button class="filter-btn" data-filter="Полиграфия">Полиграфия</button>
+                    <button class="filter-btn" data-filter="Медиа">Медиа</button>
+                    <button class="filter-btn" data-filter="Веб">Веб</button>
+                </div>
+
+                <div class="projects-grid" id="projectsGrid">
+                    <div class="project-card scroll-animate" data-category="Полиграфия">
+                        <div class="project-img project-img-1"><span class="project-badge">Полиграфия</span><span class="project-number">01</span></div>
+                        <div class="project-body">
+                            <h3>Ресторан «Урал»</h3>
+                            <p>Полный брендинг: логотип, фирменный стиль, меню, вывеска, полиграфия.</p>
+                            <div class="project-tags"><span>Figma</span><span>Illustrator</span><span>Печать</span></div>
+                        </div>
+                    </div>
+                    <div class="project-card scroll-animate" data-category="Полиграфия">
+                        <div class="project-img project-img-2"><span class="project-badge">Полиграфия</span><span class="project-number">02</span></div>
+                        <div class="project-body">
+                            <h3>Обёртка для косметики</h3>
+                            <p>Дизайн упаковки для линии натуральной косметики. Минимализм и эко-стиль.</p>
+                            <div class="project-tags"><span>Illustrator</span><span>Photoshop</span><span>Упаковка</span></div>
+                        </div>
+                    </div>
+                    <div class="project-card scroll-animate" data-category="Полиграфия">
+                        <div class="project-img project-img-3"><span class="project-badge">Полиграфия</span><span class="project-number">03</span></div>
+                        <div class="project-body">
+                            <h3>Каталог продукции</h3>
+                            <p>Многостраничный каталог для промышленной компании. Фотография и вёрстка.</p>
+                            <div class="project-tags"><span>InDesign</span><span>Photoshop</span><span>Вёрстка</span></div>
+                        </div>
+                    </div>
+                    <div class="project-card scroll-animate" data-category="Медиа">
+                        <div class="project-img project-img-4"><span class="project-badge">Медиа</span><span class="project-number">04</span></div>
+                        <div class="project-body">
+                            <h3>Промо-ролик «StartUp»</h3>
+                            <p>Видеомонтаж промо-ролика для стартапа. Динамика, тайпографика, цветокоррекция.</p>
+                            <div class="project-tags"><span>Premiere Pro</span><span>After Effects</span></div>
+                        </div>
+                    </div>
+                    <div class="project-card scroll-animate" data-category="Медиа">
+                        <div class="project-img project-img-5"><span class="project-badge">Медиа</span><span class="project-number">05</span></div>
+                        <div class="project-body">
+                            <h3>Моушн-айдентика</h3>
+                            <p>Анимированные элементы фирменного стиля для IT-компании. Логотип, лоадеры.</p>
+                            <div class="project-tags"><span>After Effects</span><span>Illustrator</span></div>
+                        </div>
+                    </div>
+                    <div class="project-card scroll-animate" data-category="Веб">
+                        <div class="project-img project-img-6"><span class="project-badge">Веб</span><span class="project-number">06</span></div>
+                        <div class="project-body">
+                            <h3>Лендинг «Стройка+»</h3>
+                            <p>UI-дизайн лендинга для строительной компании. Адаптив, прототип в Figma.</p>
+                            <div class="project-tags"><span>Figma</span><span>UI/UX</span><span>Прототип</span></div>
+                        </div>
+                    </div>
+                    <div class="project-card scroll-animate" data-category="Веб">
+                        <div class="project-img project-img-7"><span class="project-badge">Веб</span><span class="project-number">07</span></div>
+                        <div class="project-body">
+                            <h3>Приложение «Фитнес»</h3>
+                            <p>UI-дизайн мобильного фитнес-приложения. 20+ экранов, дизайн-система.</p>
+                            <div class="project-tags"><span>Figma</span><span>UI/UX</span><span>Mobile</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ EDUCATION ═══════════ -->
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-header scroll-animate">
+                    <span class="section-label">05 — Образование</span>
+                    <h2 class="section-title">Академический <span class="accent">опыт</span></h2>
+                </div>
+                <div class="education-card scroll-animate-scale">
+                    <div class="edu-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                    </div>
+                    <div class="edu-content">
+                        <span class="edu-period">2020 — 2024</span>
+                        <h3>СПБУГПТД</h3>
+                        <p class="edu-specialty">Прикладная информатика в дизайне</p>
+                        <p class="edu-desc">Университет печати, где я получил фундаментальные знания в области дизайна, типографики, информационных технологий и визуальных коммуникаций.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ CONTACT ═══════════ -->
+        <section class="section section-alt" id="contact">
+            <div class="container">
+                <div class="section-header scroll-animate">
+                    <span class="section-label">06 — Контакты</span>
+                    <h2 class="section-title">Давайте <span class="accent">работать</span></h2>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info scroll-animate-left">
+                        <p class="contact-info-text">Буду рад обсудить ваш проект или просто пообщаться на тему дизайна и технологий.</p>
+                        <div class="contact-links-list">
+                            <a href="tel:+79028332191" class="contact-link-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <div><span class="cl-label">Телефон</span><span class="cl-value">8 (902) 833-21-91</span></div>
+                            </a>
+                            <a href="mailto:wwwhiteandycom@gmail.com" class="contact-link-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                <div><span class="cl-label">Email</span><span class="cl-value">wwwhiteandycom@gmail.com</span></div>
+                            </a>
+                            <a href="https://t.me/wwwhiteandy" target="_blank" class="contact-link-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                <div><span class="cl-label">Telegram</span><span class="cl-value">@wwwhiteandy</span></div>
+                            </a>
+                            <a href="https://vk.com/wwwhiteandy" target="_blank" class="contact-link-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.12-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.678.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.27-1.422 2.18-3.61 2.18-3.61.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/></svg>
+                                <div><span class="cl-label">VK</span><span class="cl-value">vk.com/wwwhiteandy</span></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-form-wrap scroll-animate-right">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Ваше имя</label>
+                                <input type="text" id="name" placeholder="Иван Иванов" required>
+                                <span class="form-error" id="nameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="ivan@example.com" required>
+                                <span class="form-error" id="emailError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Сообщение</label>
+                                <textarea id="message" rows="5" placeholder="Расскажите о вашем проекте..." required></textarea>
+                                <span class="form-error" id="messageError"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                                Отправить сообщение
+                            </button>
+                        </form>
+                        <div class="form-success" id="formSuccess">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF4D00" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <h3>Сообщение отправлено!</h3>
+                            <p>Спасибо за обращение. Я свяжусь с вами в ближайшее время.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-socials">
+                <a href="https://vk.com/wwwhiteandy" target="_blank" aria-label="VK">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.12-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.678.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.27-1.422 2.18-3.61 2.18-3.61.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/></svg>
+                </a>
+                <a href="https://t.me/wwwhiteandy" target="_blank" aria-label="Telegram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </a>
+                <a href="mailto:wwwhiteandycom@gmail.com" aria-label="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+            </div>
+            <p class="footer-credit">
+                Создано с помощью Super Z (AI) &middot; Время выполнения: ~10 минут &middot; JS-функционал: переключение темы, анимации при прокрутке, интерактивная фильтрация проектов, анимация счётчиков, курсор-следователь, typing-эффект
+            </p>
+            <p class="footer-copy">&copy; 2026 Андрей Харин. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
