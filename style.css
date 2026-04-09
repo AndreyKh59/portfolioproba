@@ -333,17 +333,17 @@ img { max-width: 100%; display: block; }
 
 .hero .btn-primary {
     height: clamp(34px, 11.1vw, 42px);
-    background: #010101;
-    color: #fff;
-    -webkit-text-fill-color: #fff;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    -webkit-text-fill-color: var(--btn-text);
 }
 
 .hero .btn-outline {
     height: clamp(30px, 10vw, 37px);
-    background: var(--bg);
-    color: rgba(7,7,7,0.5);
-    -webkit-text-fill-color: rgba(7,7,7,0.5);
-    border: 1.6px solid rgba(0,0,0,0.5);
+    background: transparent;
+    color: var(--text-secondary);
+    -webkit-text-fill-color: var(--text-secondary);
+    border: 1.6px solid var(--btn-outline-border);
 }
 
 /* ── Digital Designer — horizontal + vertical ── */
@@ -369,8 +369,8 @@ img { max-width: 100%; display: block; }
 
 .role-v {
     position: absolute;
-    left: 2px;
-    top: 40px;
+    left: 8px;
+    top: 0;
     font-family: var(--font-display);
     font-size: clamp(30px, 9.7vw, 37px);
     font-weight: 400;
@@ -380,7 +380,7 @@ img { max-width: 100%; display: block; }
     line-height: 1;
     white-space: nowrap;
     transform: rotate(90deg);
-    transform-origin: top left;
+    transform-origin: bottom left;
 }
 
 /* ── Photo — extends beyond right edge ── */
@@ -404,12 +404,6 @@ img { max-width: 100%; display: block; }
     object-fit: cover;
     object-position: center center;
     max-width: none;
-    transition: filter 0.5s ease;
-}
-
-/* Dark theme — photo slightly desaturated/darker */
-.dark .hero-photo-wrap img {
-    filter: grayscale(40%) brightness(0.75);
 }
 
 

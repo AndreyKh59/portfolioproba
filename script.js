@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initNavbar();
     initMobileMenu();
+    initTextScramble();
     initScrollAnimations();
     initProjectFilter();
     initContactForm();
@@ -73,7 +74,71 @@ function initMobileMenu() {
 
 
 /* ═══════════════════════════════════════════════════
-   4. SCROLL ANIMATIONS
+   4. TEXT SCRAMBLE EFFECT
+   ═══════════════════════════════════════════════════ */
+function initTextScramble() {
+    const elFirst = document.querySelector('.hero-first');
+    const elLast = document.querySelector('.hero-last');
+    if (!elFirst || !elLast) return;
+
+    const finalFirst = elFirst.textContent.trim();
+    const finalLast = elLast.textContent.trim();
+
+    // Пул символов для скрэмбла (латиница + кириллица)
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЭЮЯ';
+
+    function randomChar() {
+        return chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    function scramble(el, finalText, delay) {
+        const len = finalText.length;
+        let resolved = new Array(len).fill(false);
+        let iterations = 0;
+        const maxIterations = 14;
+
+        setTimeout(() => {
+            const interval = setInterval(() => {
+                iterations++;
+                let display = '';
+
+                for (let i = 0; i < len; i++) {
+                    if (finalText[i] === ' ') {
+                        display += ' ';
+                        continue;
+                    }
+                    // С каждой итерацией замораживаем больше символов
+                    const freezeAt = Math.floor((iterations / maxIterations) * len);
+                    if (i < freezeAt || iterations >= maxIterations) {
+                        display += finalText[i];
+                        resolved[i] = true;
+                    } else {
+                        display += randomChar();
+                    }
+                }
+
+                el.textContent = display;
+
+                if (iterations >= maxIterations) {
+                    el.textContent = finalText;
+                    clearInterval(interval);
+                }
+            }, 60);
+        }, delay);
+    }
+
+    // Сбрасываем текст перед скрэмблом
+    elFirst.textContent = '';
+    elLast.textContent = '';
+
+    // Запускаем с небольшой задержкой между словами
+    scramble(elFirst, finalFirst, 200);
+    scramble(elLast, finalLast, 500);
+}
+
+
+/* ═══════════════════════════════════════════════════
+   5. SCROLL ANIMATIONS
    ═══════════════════════════════════════════════════ */
 function initScrollAnimations() {
     const targets = document.querySelectorAll('.scroll-animate');
