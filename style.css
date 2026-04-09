@@ -1200,7 +1200,6 @@ img { max-width: 100%; display: block; }
 @media (min-width: 640px) {
     .hero-text { top: 60px; }
     .hero-status { font-size: 9px; }
-    .hero-photo-wrap { right: -10%; }
 
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
 
@@ -1221,8 +1220,14 @@ img { max-width: 100%; display: block; }
 
     .section { padding: 100px 0; }
 
-    .hero-text { top: 70px; }
-    .hero-photo-wrap { right: -5%; }
+    .hero-text { top: 70px; left: 40px; }
+
+    .hero-photo-wrap {
+        right: 40px;
+        left: 55%;
+        height: calc(100vh - 200px);
+        top: 200px;
+    }
 
     .modal-content { max-width: 680px; }
 }

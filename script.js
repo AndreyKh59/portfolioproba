@@ -295,6 +295,14 @@ function initProjectFilter() {
     const tabs = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.project-card');
 
+    // Initially show only active tab (Брендинг)
+    const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+    cards.forEach(card => {
+        if (card.dataset.category !== activeFilter) {
+            card.classList.add('hidden');
+        }
+    });
+
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const filter = tab.dataset.filter;
