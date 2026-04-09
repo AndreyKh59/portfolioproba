@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initTextScramble();
     initScrollAnimations();
+    initSkillBars();
     initProjectFilter();
+    initProjectModal();
     initContactForm();
 });
 
@@ -84,7 +86,6 @@ function initTextScramble() {
     const finalFirst = elFirst.textContent.trim();
     const finalLast = elLast.textContent.trim();
 
-    // Пул символов для скрэмбла (латиница + кириллица)
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЭЮЯ';
 
     function randomChar() {
@@ -93,7 +94,6 @@ function initTextScramble() {
 
     function scramble(el, finalText, delay) {
         const len = finalText.length;
-        let resolved = new Array(len).fill(false);
         let iterations = 0;
         const maxIterations = 24;
 
@@ -107,11 +107,9 @@ function initTextScramble() {
                         display += ' ';
                         continue;
                     }
-                    // С каждой итерацией замораживаем больше символов
                     const freezeAt = Math.floor((iterations / maxIterations) * len);
                     if (i < freezeAt || iterations >= maxIterations) {
                         display += finalText[i];
-                        resolved[i] = true;
                     } else {
                         display += randomChar();
                     }
@@ -127,11 +125,9 @@ function initTextScramble() {
         }, delay);
     }
 
-    // Сбрасываем текст перед скрэмблом
     elFirst.textContent = '';
     elLast.textContent = '';
 
-    // Запускаем с задержкой между словами
     scramble(elFirst, finalFirst, 300);
     scramble(elLast, finalLast, 800);
 }
@@ -159,7 +155,29 @@ function initScrollAnimations() {
 
 
 /* ═══════════════════════════════════════════════════
-   5. PROJECT FILTER
+   6. SKILL BARS ANIMATION
+   ═══════════════════════════════════════════════════ */
+function initSkillBars() {
+    const fills = document.querySelectorAll('.skill-fill');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.3 }
+    );
+
+    fills.forEach(fill => observer.observe(fill));
+}
+
+
+/* ═══════════════════════════════════════════════════
+   7. PROJECT FILTER
    ═══════════════════════════════════════════════════ */
 function initProjectFilter() {
     const tabs = document.querySelectorAll('.filter-btn');
@@ -174,7 +192,7 @@ function initProjectFilter() {
 
             cards.forEach(card => {
                 const category = card.dataset.category;
-                if (filter === 'Все' || category === filter) {
+                if (category === filter) {
                     card.classList.remove('hidden');
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(12px)';
@@ -197,7 +215,168 @@ function initProjectFilter() {
 
 
 /* ═══════════════════════════════════════════════════
-   6. CONTACT FORM
+   8. PROJECT MODAL + CAROUSEL
+   ═══════════════════════════════════════════════════ */
+function initProjectModal() {
+    const modal = document.getElementById('projectModal');
+    const closeBtn = document.getElementById('modalClose');
+    const backdrop = modal.querySelector('.modal-backdrop');
+    const track = document.getElementById('carouselTrack');
+    const dotsWrap = document.getElementById('carouselDots');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+
+    // Данные проектов (текст-рыба, серые плейсхолдеры)
+    const projectData = {
+        'branding-1': {
+            title: 'Бивни — Боевой клуб',
+            desc: 'Полный цикл брендинга для боевого клуба «Бивни». Разработка логотипа, фирменного стиля, иконографии. Создание рекламных материалов: плакаты, шоперы, баннеры. Интеграция QR-маркетинга в офлайн-материалы. Мерч для участников клуба.',
+            tags: ['Брендинг', 'Полиграфия', 'Мерч', 'QR-маркетинг'],
+            slides: ['Макет логотипа', 'Фирменный стиль', 'Плакат', 'Мерч']
+        },
+        'branding-2': {
+            title: 'Кофейня «Зерно»',
+            desc: 'Создание айдентики для specialty-кофейни. Логотип, палитра, типографика. Дизайн меню, стаканчиков, упаковки для зёрен и мерча. Единый визуальный язык для всех точек контакта с клиентом.',
+            tags: ['Айдентика', 'Упаковка', 'Типографика'],
+            slides: ['Логотип', 'Меню', 'Упаковка', 'Стаканчики']
+        },
+        'branding-3': {
+            title: 'Логотипы 2024',
+            desc: 'Подборка логотипов для различных клиентов из разных сфер: от IT-стартапов до ресторанов и фитнес-клубов. Разнообразные подходы: минимализм, геометрия, hand-drawn, буквенные знаки.',
+            tags: ['Логотип', 'Illustrator', 'Векторная графика'],
+            slides: ['Логотип 1', 'Логотип 2', 'Логотип 3', 'Логотип 4']
+        },
+        'web-1': {
+            title: 'Корпоративный сайт',
+            desc: 'UI/UX дизайн и вёрстка корпоративного сайта для IT-компании. Адаптивный дизайн, анимации при скролле, интерактивные элементы. Прототипирование в Figma, тестирование на пользователях.',
+            tags: ['UI/UX', 'Figma', 'HTML/CSS', 'Анимации'],
+            slides: ['Главная', 'О компании', 'Услуги', 'Контакты']
+        },
+        'web-2': {
+            title: 'Лендинг приложения',
+            desc: 'Лендинг для мобильного приложения. Визуальная концепция: градиенты, иконки, 3D-элементы. Экраны приложения, адаптация под iOS и Android гайдлайны.',
+            tags: ['Лендинг', 'Мобайл', 'UI'],
+            slides: ['Hero-секция', 'Фичи', 'Экраны приложения', 'CTA']
+        },
+        'web-3': {
+            title: 'Онлайн-магазин',
+            desc: 'Дизайн интернет-магазина одежды. Карточки товаров, каталог с фильтрами, корзина, личный кабинет, чекаут. Микроанимации и hover-эффекты для лучшего UX.',
+            tags: ['E-commerce', 'UX', 'Figma'],
+            slides: ['Главная', 'Каталог', 'Карточка товара', 'Корзина']
+        },
+        'media-1': {
+            title: 'Моушн-пакет',
+            desc: 'Анимированные элементы для digital-проектов: анимация логотипов, transitions для интерфейсов, Lottie-анимации для мобильных приложений. Сочетание 2D и 3D подходов.',
+            tags: ['Моушн', 'After Effects', 'Lottie'],
+            slides: ['Анимация логотипа', 'Transitions', 'Lottie', 'Интерфейс']
+        },
+        'media-2': {
+            title: 'Промо-ролик',
+            desc: 'Съёмка и монтаж промо-ролика для бренда одежды. Работа с оператором, цветокоррекция, kinetic-тайпографика, саунд-дизайн. Форматы: 16:9 для YouTube, 9:16 для Reels.',
+            tags: ['Видео', 'Premiere', 'Тайпографика'],
+            slides: ['Кадр 1', 'Кадр 2', 'Кадр 3', 'Финал']
+        },
+        'media-3': {
+            title: 'Заставка для игры',
+            desc: 'Дизайн стартового экрана для игровой платформы. 3D-элементы созданы в Blender, композитинг и пост-обработка в After Effects. Атмосферный, кинематографичный результат.',
+            tags: ['Игры', 'Blender', 'After Effects', '3D'],
+            slides: ['Концепт', '3D-моделинг', 'Композитинг', 'Финал']
+        }
+    };
+
+    let currentSlide = 0;
+    let totalSlides = 0;
+
+    function openModal(projectId) {
+        const data = projectData[projectId];
+        if (!data) return;
+
+        currentSlide = 0;
+        totalSlides = data.slides.length;
+
+        // Заполняем карусель
+        track.innerHTML = data.slides.map((slide, i) => `
+            <div class="carousel-slide">
+                <div class="carousel-slide-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span>${slide}</span>
+                </div>
+            </div>
+        `).join('');
+
+        // Dots
+        dotsWrap.innerHTML = data.slides.map((_, i) =>
+            `<div class="carousel-dot${i === 0 ? ' active' : ''}"></div>`
+        ).join('');
+
+        // Info
+        document.querySelector('.modal-title').textContent = data.title;
+        document.querySelector('.modal-desc').textContent = data.desc;
+        document.querySelector('.modal-tags').innerHTML = data.tags.map(t =>
+            `<span>${t}</span>`
+        ).join('');
+
+        updateCarousel();
+
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        const dots = dotsWrap.querySelectorAll('.carousel-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    }
+
+    function goSlide(dir) {
+        currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+
+    // Click on cards
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(card.dataset.project);
+        });
+    });
+
+    // Close
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') goSlide(-1);
+        if (e.key === 'ArrowRight') goSlide(1);
+    });
+
+    prevBtn.addEventListener('click', () => goSlide(-1));
+    nextBtn.addEventListener('click', () => goSlide(1));
+
+    // Swipe support
+    let touchStartX = 0;
+    const carousel = document.getElementById('modalCarousel');
+
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+            goSlide(diff > 0 ? 1 : -1);
+        }
+    }, { passive: true });
+}
+
+
+/* ═══════════════════════════════════════════════════
+   9. CONTACT FORM
    ═══════════════════════════════════════════════════ */
 function initContactForm() {
     const form = document.getElementById('contactForm');
@@ -265,7 +444,7 @@ function initContactForm() {
 
 
 /* ═══════════════════════════════════════════════════
-   7. SMOOTH SCROLL
+   10. SMOOTH SCROLL
    ═══════════════════════════════════════════════════ */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
