@@ -384,11 +384,11 @@ img { max-width: 100%; display: block; }
     transform-origin: bottom left;
 }
 
-/* ── Photo — extends beyond right edge ── */
+/* ── Photo — aligned to header right edge ── */
 .hero-photo-wrap {
-    position: fixed;
-    left: 25px;
-    right: 5%;
+    position: absolute;
+    left: 30px;
+    right: 20px;
     top: 260px;
     height: calc(100vh - 260px);
     overflow: hidden;
