@@ -365,7 +365,7 @@ img { max-width: 100%; display: block; }
 .hero-role {
     position: absolute;
     left: -4px;
-    top: 263px;
+    top: 248px;
     display: flex;
     align-items: flex-start;
     gap: 0;
@@ -1237,12 +1237,44 @@ img { max-width: 100%; display: block; }
 
     .hero-text { top: 80px; left: calc((100vw - 1080px) / 2 + 20px); }
 
+    /* Desktop: bigger text & buttons */
+    .hero-status { font-size: 10px; }
+
+    .hero-name { top: 40px; }
+
+    .hero-first { font-size: clamp(48px, 5vw, 64px); }
+
+    .hero-last { font-size: clamp(42px, 4.5vw, 56px); line-height: 48px; }
+
+    .hero-cta { top: 175px; }
+
+    .hero .btn {
+        min-width: 220px;
+        font-size: 15px;
+        line-height: 38px;
+        border-radius: 18px;
+    }
+
+    .hero .btn-primary { height: 48px; }
+
+    .hero .btn-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 15px;
+    }
+
+    .hero-role { top: 300px; }
+
+    .role-h { font-size: clamp(40px, 4vw, 52px); line-height: 48px; }
+
+    .role-v { font-size: clamp(40px, 4vw, 52px); }
+
     .hero-photo-wrap {
         right: calc((100vw - 1080px) / 2 + 20px);
         left: auto;
-        width: clamp(260px, 28vw, 360px);
-        height: calc(100vh - 240px);
-        top: 240px;
+        width: clamp(280px, 30vw, 400px);
+        height: calc(100vh - 200px);
+        top: 200px;
     }
 
     .modal-content { max-width: 680px; }
