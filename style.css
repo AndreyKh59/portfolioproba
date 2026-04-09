@@ -1235,7 +1235,12 @@ img { max-width: 100%; display: block; }
 
     .section { padding: 100px 0; }
 
-    .hero-text { top: 80px; left: calc((100vw - 1080px) / 2 + 20px); }
+    /* Desktop: center text block vertically */
+    .hero-text {
+        top: 50%;
+        left: calc((100vw - 1080px) / 2 + 20px);
+        transform: translateY(-50%);
+    }
 
     /* Desktop: bigger text & buttons */
     .hero-status { font-size: 10px; }
@@ -1258,12 +1263,17 @@ img { max-width: 100%; display: block; }
     .hero .btn-primary { height: 48px; }
 
     .hero .btn-icon {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
         border-radius: 15px;
     }
 
-    .hero-role { top: 300px; }
+    /* Digital Designer — near photo at bottom */
+    .hero-role {
+        top: auto;
+        bottom: 40px;
+        left: calc((100vw - 1080px) / 2 + 20px);
+    }
 
     .role-h { font-size: clamp(40px, 4vw, 52px); line-height: 48px; }
 
@@ -1273,8 +1283,8 @@ img { max-width: 100%; display: block; }
         right: calc((100vw - 1080px) / 2 + 20px);
         left: auto;
         width: clamp(280px, 30vw, 400px);
-        height: calc(100vh - 200px);
-        top: 200px;
+        height: calc(100vh - 80px);
+        top: 40px;
     }
 
     .modal-content { max-width: 680px; }
