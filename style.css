@@ -1326,10 +1326,10 @@ img { max-width: 100%; display: block; }
 
     .hero .btn-secondary { height: 48px; }
 
-    /* Digital — above, Designer — below, near photo */
+    /* Digital — above, Designer — beside photo left, both higher */
     .hero-role {
-        top: 28%;
-        left: calc(50% - 55px);
+        top: 18%;
+        left: calc(50% - 12px);
         bottom: auto;
     }
 

@@ -24,16 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
 function initTheme() {
     const toggle = document.getElementById('themeToggle');
 
+    const el = document.documentElement;
     const saved = localStorage.getItem('theme-white');
     if (saved === 'light') {
-        document.body.classList.remove('dark');
+        el.classList.remove('dark');
     } else {
-        document.body.classList.add('dark');
+        el.classList.add('dark');
     }
 
     toggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        localStorage.setItem('theme-white', document.body.classList.contains('dark') ? 'dark' : 'light');
+        el.classList.toggle('dark');
+        localStorage.setItem('theme-white', el.classList.contains('dark') ? 'dark' : 'light');
     });
 }
 
