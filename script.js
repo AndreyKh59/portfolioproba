@@ -174,12 +174,20 @@ function initSkillTabs() {
             panels.forEach(panel => {
                 if (panel.dataset.skill === skill) {
                     panel.classList.add('active');
-                    // Re-animate skill bars in this panel
-                    const fills = panel.querySelectorAll('.skill-fill');
-                    fills.forEach(fill => {
-                        fill.classList.remove('animate');
-                        void fill.offsetWidth; // trigger reflow
-                        fill.classList.add('animate');
+                    // Re-animate skill bars after panel is visible
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            const fills = panel.querySelectorAll('.skill-fill');
+                            fills.forEach(fill => {
+                                fill.style.transition = 'none';
+                                fill.style.width = '0';
+                                void fill.offsetWidth; // force reflow
+                                fill.style.transition = '';
+                                fill.classList.remove('animate');
+                                void fill.offsetWidth;
+                                fill.classList.add('animate');
+                            });
+                        });
                     });
                 } else {
                     panel.classList.remove('active');
@@ -294,12 +302,13 @@ function initAccordion() {
 function initProjectFilter() {
     const tabs = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.project-card');
+    const grid = document.getElementById('projectsGrid');
 
     // Initially show only active tab (Брендинг)
     const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
     cards.forEach(card => {
         if (card.dataset.category !== activeFilter) {
-            card.classList.add('hidden');
+            card.style.display = 'none';
         }
     });
 
@@ -310,27 +319,42 @@ function initProjectFilter() {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
 
-            cards.forEach(card => {
-                const category = card.dataset.category;
-                if (category === filter) {
-                    card.classList.remove('hidden');
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(12px)';
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        });
+            // Fade out all first
+            grid.style.opacity = '0';
+            grid.style.transform = 'translateY(8px)';
+
+            setTimeout(() => {
+                cards.forEach(card => {
+                    if (card.dataset.category === filter) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(12px)';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Fade in
+                requestAnimationFrame(() => {
+                    grid.style.opacity = '1';
+                    grid.style.transform = 'translateY(0)';
+
+                    cards.forEach((card, i) => {
+                        if (card.dataset.category === filter) {
+                            setTimeout(() => {
+                                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, i * 60);
+                        }
                     });
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(12px)';
-                    setTimeout(() => card.classList.add('hidden'), 300);
-                }
-            });
+                });
+            }, 250);
         });
     });
+
+    // Add transition to grid
+    grid.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
 }
 
 
