@@ -755,7 +755,7 @@ img { max-width: 100%; display: block; }
 .filter-tabs::-webkit-scrollbar { display: none; }
 
 .filter-btn {
-    padding: 8px 18px;
+    padding: 10px 24px;
     font-size: 13px;
     font-weight: 500;
     white-space: nowrap;
@@ -1245,11 +1245,11 @@ img { max-width: 100%; display: block; }
 
     .section { padding: 100px 0; }
 
-    /* Desktop: center text block vertically */
+    /* Desktop: raise text block above center */
     .hero-text {
         top: 50%;
         left: calc((100vw - 1280px) / 2 + 20px);
-        transform: translateY(-50%);
+        transform: translateY(-65%);
     }
 
     /* Desktop: bigger text & buttons */
@@ -1273,23 +1273,29 @@ img { max-width: 100%; display: block; }
 
     .hero .btn-secondary { height: 44px; }
 
-    /* Digital Designer — near photo at bottom */
+    /* Digital — above photo, Designer — below photo */
     .hero-role {
         top: auto;
-        bottom: 40px;
         left: calc((100vw - 1280px) / 2 + 20px);
+        bottom: 40px;
     }
 
-    .role-h { font-size: clamp(40px, 4vw, 52px); line-height: 48px; }
+    .role-h {
+        font-size: clamp(40px, 4vw, 52px);
+        line-height: 48px;
+        position: absolute;
+        bottom: calc(100vh - 50% - 60px);
+    }
 
     .role-v { font-size: clamp(40px, 4vw, 52px); }
 
+    /* Photo — starts from center, left-aligned */
     .hero-photo-wrap {
-        right: calc((100vw - 1280px) / 2 + 20px);
-        left: auto;
-        width: clamp(280px, 30vw, 400px);
-        height: calc(100vh - 80px);
-        top: 40px;
+        left: 50%;
+        right: 0;
+        width: auto;
+        height: calc(100vh - 50%);
+        top: 50%;
     }
 
     .modal-content { max-width: 680px; }
@@ -1303,6 +1309,11 @@ img { max-width: 100%; display: block; }
     .hero-photo-wrap { right: -3%; }
 
     .projects-grid { gap: 20px; }
+
+    .filter-btn {
+        padding: 12px 32px;
+        font-size: 14px;
+    }
 
     .modal-content { max-width: 740px; }
 }

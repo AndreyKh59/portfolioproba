@@ -177,9 +177,10 @@ function initSkillTabs() {
         // Step 2: Force reflow
         void panel.offsetHeight;
 
-        // Step 3: Stagger animate each bar
+        // Step 3: Clear inline width so CSS class takes effect, then animate
         fills.forEach((fill, i) => {
             setTimeout(() => {
+                fill.style.width = '';  // clear inline style
                 fill.style.transition = '';
                 fill.classList.add('animate');
             }, i * 100 + 30);
