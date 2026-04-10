@@ -621,7 +621,8 @@ img { max-width: 100%; display: block; }
 }
 
 .dark .skill-fill {
-    background: var(--text-secondary);
+    background: #F0F0F0;
+    box-shadow: 0 0 8px rgba(240, 240, 240, 0.4);
 }
 
 
@@ -1308,7 +1309,7 @@ img { max-width: 100%; display: block; }
 @media (min-width: 1024px) {
     .hero-photo-wrap { right: -3%; }
 
-    .projects-grid { gap: 20px; }
+    .projects-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
     .filter-btn {
         padding: 12px 32px;
