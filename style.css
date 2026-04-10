@@ -1326,24 +1326,26 @@ img { max-width: 100%; display: block; }
 
     .hero .btn-secondary { height: 48px; }
 
-    /* Digital — above, Designer — beside photo left, both higher */
+    /* Desktop: Digital + Designer stacked below Услуги nav link */
     .hero-role {
-        top: 18%;
-        left: calc(50% - 12px);
+        top: 76px;
+        left: calc((100vw - 1280px) / 2 + 430px);
         bottom: auto;
+        flex-direction: column;
     }
 
     .role-h {
         font-size: clamp(44px, 4.2vw, 56px);
-        line-height: 52px;
-        position: absolute;
-        bottom: calc(100% + 10px);
-        left: 0;
+        line-height: 1.05;
     }
 
     .role-v {
         font-size: clamp(44px, 4.2vw, 56px);
-        transform-origin: top left;
+        position: static;
+        left: auto;
+        top: auto;
+        transform: none;
+        transform-origin: unset;
     }
 
     /* Photo — starts below header, ~1/3 width */
