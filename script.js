@@ -164,6 +164,28 @@ function initSkillTabs() {
     const tabs = document.querySelectorAll('.skill-tab');
     const panels = document.querySelectorAll('.skill-panel');
 
+    function resetAndAnimateBars(panel) {
+        const fills = panel.querySelectorAll('.skill-fill');
+
+        // Step 1: Immediately reset all bars
+        fills.forEach(fill => {
+            fill.style.transition = 'none';
+            fill.classList.remove('animate');
+            fill.style.width = '0';
+        });
+
+        // Step 2: Force reflow
+        void panel.offsetHeight;
+
+        // Step 3: Stagger animate each bar
+        fills.forEach((fill, i) => {
+            setTimeout(() => {
+                fill.style.transition = '';
+                fill.classList.add('animate');
+            }, i * 100 + 30);
+        });
+    }
+
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const skill = tab.dataset.skill;
@@ -174,21 +196,8 @@ function initSkillTabs() {
             panels.forEach(panel => {
                 if (panel.dataset.skill === skill) {
                     panel.classList.add('active');
-                    // Re-animate skill bars after panel is visible
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            const fills = panel.querySelectorAll('.skill-fill');
-                            fills.forEach(fill => {
-                                fill.style.transition = 'none';
-                                fill.style.width = '0';
-                                void fill.offsetWidth; // force reflow
-                                fill.style.transition = '';
-                                fill.classList.remove('animate');
-                                void fill.offsetWidth;
-                                fill.classList.add('animate');
-                            });
-                        });
-                    });
+                    // Re-animate bars (works even on re-click of same tab)
+                    resetAndAnimateBars(panel);
                 } else {
                     panel.classList.remove('active');
                 }
@@ -370,67 +379,117 @@ function initProjectModal() {
     const prevBtn = document.getElementById('carouselPrev');
     const nextBtn = document.getElementById('carouselNext');
 
-    // Данные проектов (текст-рыба, серые плейсхолдеры)
+    // Данные проектов с путями к картинкам
     const projectData = {
         'branding-1': {
             title: 'Бивни — Боевой клуб',
             desc: 'Полный цикл брендинга для боевого клуба «Бивни». Разработка логотипа, фирменного стиля, иконографии. Создание рекламных материалов: плакаты, шоперы, баннеры. Интеграция QR-маркетинга в офлайн-материалы. Мерч для участников клуба.',
             tags: ['Брендинг', 'Полиграфия', 'Мерч', 'QR-маркетинг'],
-            slides: ['Макет логотипа', 'Фирменный стиль', 'Плакат', 'Мерч']
+            images: [
+                'pictures/branding/1work/1picture.png',
+                'pictures/branding/1work/2picture.png',
+                'pictures/branding/1work/3picture.png',
+                'pictures/branding/1work/4picture.png'
+            ]
         },
         'branding-2': {
             title: 'Кофейня «Зерно»',
             desc: 'Создание айдентики для specialty-кофейни. Логотип, палитра, типографика. Дизайн меню, стаканчиков, упаковки для зёрен и мерча. Единый визуальный язык для всех точек контакта с клиентом.',
             tags: ['Айдентика', 'Упаковка', 'Типографика'],
-            slides: ['Логотип', 'Меню', 'Упаковка', 'Стаканчики']
+            images: [
+                'pictures/branding/2work/1picture.png',
+                'pictures/branding/2work/2picture.png',
+                'pictures/branding/2work/3picture.png',
+                'pictures/branding/2work/4picture.png'
+            ]
         },
         'branding-3': {
             title: 'Логотипы 2024',
             desc: 'Подборка логотипов для различных клиентов из разных сфер: от IT-стартапов до ресторанов и фитнес-клубов. Разнообразные подходы: минимализм, геометрия, hand-drawn, буквенные знаки.',
             tags: ['Логотип', 'Illustrator', 'Векторная графика'],
-            slides: ['Логотип 1', 'Логотип 2', 'Логотип 3', 'Логотип 4']
+            images: [
+                'pictures/branding/3work/1picture.png',
+                'pictures/branding/3work/2picture.png',
+                'pictures/branding/3work/3picture.png',
+                'pictures/branding/3work/4picture.png'
+            ]
         },
         'web-1': {
             title: 'Корпоративный сайт',
             desc: 'UI/UX дизайн и вёрстка корпоративного сайта для IT-компании. Адаптивный дизайн, анимации при скролле, интерактивные элементы. Прототипирование в Figma, тестирование на пользователях.',
             tags: ['UI/UX', 'Figma', 'HTML/CSS', 'Анимации'],
-            slides: ['Главная', 'О компании', 'Услуги', 'Контакты']
+            images: [
+                'pictures/web/1work/1picture.png',
+                'pictures/web/1work/2picture.png',
+                'pictures/web/1work/3picture.png',
+                'pictures/web/1work/4picture.png'
+            ]
         },
         'web-2': {
             title: 'Лендинг приложения',
             desc: 'Лендинг для мобильного приложения. Визуальная концепция: градиенты, иконки, 3D-элементы. Экраны приложения, адаптация под iOS и Android гайдлайны.',
             tags: ['Лендинг', 'Мобайл', 'UI'],
-            slides: ['Hero-секция', 'Фичи', 'Экраны приложения', 'CTA']
+            images: [
+                'pictures/web/2work/1picture.png',
+                'pictures/web/2work/2picture.png',
+                'pictures/web/2work/3picture.png',
+                'pictures/web/2work/4picture.png'
+            ]
         },
         'web-3': {
             title: 'Онлайн-магазин',
             desc: 'Дизайн интернет-магазина одежды. Карточки товаров, каталог с фильтрами, корзина, личный кабинет, чекаут. Микроанимации и hover-эффекты для лучшего UX.',
             tags: ['E-commerce', 'UX', 'Figma'],
-            slides: ['Главная', 'Каталог', 'Карточка товара', 'Корзина']
+            images: [
+                'pictures/web/3work/1picture.png',
+                'pictures/web/3work/2picture.png',
+                'pictures/web/3work/3picture.png',
+                'pictures/web/3work/4picture.png'
+            ]
         },
         'media-1': {
             title: 'Моушн-пакет',
             desc: 'Анимированные элементы для digital-проектов: анимация логотипов, transitions для интерфейсов, Lottie-анимации для мобильных приложений. Сочетание 2D и 3D подходов.',
             tags: ['Моушн', 'After Effects', 'Lottie'],
-            slides: ['Анимация логотипа', 'Transitions', 'Lottie', 'Интерфейс']
+            images: [
+                'pictures/media/1work/1picture.png',
+                'pictures/media/1work/2picture.png',
+                'pictures/media/1work/3picture.png',
+                'pictures/media/1work/4picture.png'
+            ]
         },
         'media-2': {
             title: 'Промо-ролик',
             desc: 'Съёмка и монтаж промо-ролика для бренда одежды. Работа с оператором, цветокоррекция, kinetic-тайпографика, саунд-дизайн. Форматы: 16:9 для YouTube, 9:16 для Reels.',
             tags: ['Видео', 'Premiere', 'Тайпографика'],
-            slides: ['Кадр 1', 'Кадр 2', 'Кадр 3', 'Финал']
+            images: [
+                'pictures/media/2work/1picture.png',
+                'pictures/media/2work/2picture.png',
+                'pictures/media/2work/3picture.png',
+                'pictures/media/2work/4picture.png'
+            ]
         },
         'media-3': {
             title: 'Заставка для игры',
             desc: 'Дизайн стартового экрана для игровой платформы. 3D-элементы созданы в Blender, композитинг и пост-обработка в After Effects. Атмосферный, кинематографичный результат.',
             tags: ['Игры', 'Blender', 'After Effects', '3D'],
-            slides: ['Концепт', '3D-моделинг', 'Композитинг', 'Финал']
+            images: [
+                'pictures/media/3work/1picture.png',
+                'pictures/media/3work/2picture.png',
+                'pictures/media/3work/3picture.png',
+                'pictures/media/3work/4picture.png'
+            ]
         },
         'media-4': {
             title: 'Social media pack',
             desc: 'Полное оформление соцсетей для бренда: шаблоны сторис, посты, хайлайтсы, обложки. Единый визуальный стиль, адаптированный для Instagram и VK. Более 50 шаблонов для регулярного контента.',
             tags: ['SMM', 'Photoshop', 'Figma', 'Шаблоны'],
-            slides: ['Шаблоны сторис', 'Посты', 'Хайлайтсы', 'Обложки']
+            images: [
+                'pictures/media/4work/1picture.png',
+                'pictures/media/4work/2picture.png',
+                'pictures/media/4work/3picture.png',
+                'pictures/media/4work/4picture.png'
+            ]
         }
     };
 
@@ -442,20 +501,19 @@ function initProjectModal() {
         if (!data) return;
 
         currentSlide = 0;
-        totalSlides = data.slides.length;
+        totalSlides = data.images.length;
 
-        // Заполняем карусель
-        track.innerHTML = data.slides.map((slide, i) => `
+        // Заполняем карусель картинками
+        track.innerHTML = data.images.map((img, i) => `
             <div class="carousel-slide">
                 <div class="carousel-slide-inner">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                    <span>${slide}</span>
+                    <img src="${img}" alt="${data.title} — ${i + 1}" loading="lazy">
                 </div>
             </div>
         `).join('');
 
         // Dots
-        dotsWrap.innerHTML = data.slides.map((_, i) =>
+        dotsWrap.innerHTML = data.images.map((_, i) =>
             `<div class="carousel-dot${i === 0 ? ' active' : ''}"></div>`
         ).join('');
 
