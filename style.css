@@ -1300,7 +1300,7 @@ img { max-width: 100%; display: block; }
 
     /* Desktop: raise text block high */
     .hero-text {
-        top: 40%;
+        top: 30%;
         left: calc((100vw - 1280px) / 2 + 20px);
         transform: translateY(-50%);
     }
@@ -1328,8 +1328,8 @@ img { max-width: 100%; display: block; }
 
     /* Desktop: Digital horizontal, Designer vertical below it */
     .hero-role {
-        top: 38px;
-        left: calc((100vw - 1280px) / 2 + 350px);
+        top: 12px;
+        left: calc((100vw - 1280px) / 2 + 280px);
         bottom: auto;
         flex-direction: column;
     }
@@ -1345,7 +1345,7 @@ img { max-width: 100%; display: block; }
         left: -3px;
         top: 0;
         transform: rotate(90deg);
-        transform-origin: top left;
+        transform-origin: bottom left;
     }
 
     /* Photo — starts below header, ~1/3 width */
