@@ -480,17 +480,6 @@ function initProjectModal() {
                 'pictures/media/3work/3picture.png',
                 'pictures/media/3work/4picture.png'
             ]
-        },
-        'media-4': {
-            title: 'Social media pack',
-            desc: 'Полное оформление соцсетей для бренда: шаблоны сторис, посты, хайлайтсы, обложки. Единый визуальный стиль, адаптированный для Instagram и VK. Более 50 шаблонов для регулярного контента.',
-            tags: ['SMM', 'Photoshop', 'Figma', 'Шаблоны'],
-            images: [
-                'pictures/media/4work/1picture.png',
-                'pictures/media/4work/2picture.png',
-                'pictures/media/4work/3picture.png',
-                'pictures/media/4work/4picture.png'
-            ]
         }
     };
 
